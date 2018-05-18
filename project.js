@@ -8,10 +8,35 @@ const workInput = document.querySelector('#work');
 loadEventListeners();
 
 function loadEventListeners() {
+    document.addEventListener('DOMContentLoaded', getWorks)
     form.addEventListener('submit', addWork);
     workList.addEventListener('click', removeWork);
     deleteBtn.addEventListener('click', clearAll);
     filter.addEventListener('keyup', filterWork)
+}
+
+//getLocal
+function getWorks() {
+    let works;
+    if(localStorage.getItem('works') === null){
+        works = [];
+    } else {
+        works = JSON.parse(localStorage.getItem('works'));
+    }
+    works.forEach(function(work){
+        const workGrid = document.createElement('div');
+    workGrid.className = 'toDo';
+    workList.appendChild(workGrid);
+
+    const div = document.createElement('div');
+    div.appendChild(document.createTextNode(work));
+    workGrid.appendChild(div);
+
+    const link = document.createElement('a');
+    link.className = 'remove';
+    link.innerHTML = '<i class="fa fa-times" aria-hidden="true"></i>';
+    workGrid.appendChild(link);
+    });
 }
 
 //add
@@ -34,11 +59,23 @@ function addWork(e) {
     link.innerHTML = '<i class="fa fa-times" aria-hidden="true"></i>';
     workGrid.appendChild(link);
 
-    
+    saveWorkInLocalStorage(workInput.value);
 
     workInput.value= '';
 
     e.preventDefault();
+}
+
+function saveWorkInLocalStorage(work) {
+    let works;
+    if(localStorage.getItem('works') === null){
+        works = [];
+    } else {
+        works = JSON.parse(localStorage.getItem('works'));
+    }
+    works.push(work);
+
+    localStorage.setItem('works', JSON.stringify(works));
 }
 
 //remove
