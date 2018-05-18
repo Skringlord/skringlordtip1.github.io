@@ -1,0 +1,50 @@
+.header {
+    display: grid;
+    grid-template-columns: minmax(300px, 1fr);
+    text-align: center;
+    color: red;
+    font-size: 2em;
+    font-family: 'Times New Roman', Times, serif;
+}
+.workAdd {
+    text-align: center;
+    font-size: 1.2em;
+    font-family: 'Times New Roman', Times, serif;
+}
+.button {
+    height: 2em;
+    color: white;
+    text-align: center;
+    background-color: red;
+    border: 1px solid grey;
+}
+.workFilter {
+    text-align: center;
+    font-size: 1em;
+    color: red;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.workContainer {
+    display: grid;
+    text-align: center;
+    grid-template-columns: 1fr;
+}
+.toDo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    text-align: center;
+    border-bottom: 1px solid red;
+}
+
+
+.buttonDelete {
+    display: block;
+    text-decoration: none;
+    height: 2em;
+    font-size: 1.2em;
+    color: red;
+    text-align: center;
+    background-color: grey;
+    border: 1px solid black;
+}
