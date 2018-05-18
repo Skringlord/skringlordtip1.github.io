@@ -81,9 +81,28 @@ function saveWorkInLocalStorage(work) {
 //remove
 
 function removeWork(e) {
-    if(e.target.parentElement.classList.contains('remove')) {
+    if(e.target.parentElement.classList.contains('remove'))
+    {
         e.target.parentElement.parentElement.remove();
+
+        delWorkFromLocalStorage(e.target.parentElement.parentElement);
     }
+}
+
+function delWorkFromLocalStorage(workItem){
+    let works;
+    if(localStorage.getItem('works') === null){
+        works = [];
+    } else {
+        works = JSON.parse(localStorage.getItem('works'));
+    }
+
+    works.forEach(function(work, index){
+        if(workItem.textContent === work){
+            works.splice(index, 1);
+        }
+    });
+    localStorage.setItem('works', JSON.stringify(works));
 }
 
 //clear all
