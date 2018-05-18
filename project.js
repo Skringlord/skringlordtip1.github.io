@@ -110,6 +110,11 @@ function clearAll() {
     while(workList.firstChild) {
         workList.removeChild(workList.firstChild);
     }
+    clearWorkFromLocalStorage();
+}
+
+function clearWorkFromLocalStorage() {
+    localStorage.clear();
 }
 
 function filterWork(e) {
